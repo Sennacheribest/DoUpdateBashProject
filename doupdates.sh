@@ -48,28 +48,26 @@ then
 fi
 obselet-code
 
-# take a snapshot of available updates and save it in _UPDATES_FILE variable
-#===========================================================================
-dnf check-update > ${_UPDATES_FILE}
-#===========================================================================
-
 # modify script logic to quit with a message if there are no updates available now
 # facilitale the RC (Returen Code) from the command "dnf check-update"; 100: if available, 0: if not;
 # and use that as a side effect to create a list of updates that can be searched for item that will 
 # trigger a reboot logic.
 #====================================================================================================
-_UPDATES_AVAILABLE=${?}
-if [ ${_UPDATES_AVAILABLE} -eq 0 ]
+if [ ${_CHECK} -eq 1 ]
 then
-	echo " ---> Updates are NOT available for host ${HOSTNAME} at this time."
-	exit 0
-else
+	# take a snapshot of available updates and save it in _UPDATES_FILE variable
+	dnf check-update > ${_UPDATES_FILE}
+	_UPDATES_AVAILABLE=${?}
 	_NUM_OF_AVAILABLE_PACKAGES=$(wc -l /tmp/updates.list | awk '{print $1}')
-	echo " ---> ${_NUM_OF_AVAILABLE_PACKAGES} Updates are AVAILABLE for host ${HOSTNAME}."
-	if [ ${_CHECK} -eq 1 ]
+	if [ ${_UPDATES_AVAILABLE} -eq 0 ]
 	then
+		echo " ---> Updates are NOT available for host ${HOSTNAME} at this time."
 		exit 0
+	else
+		echo " ---> ${_NUM_OF_AVAILABLE_PACKAGES} Updates are AVAILABLE for host ${HOSTNAME}."
 	fi
+else
+	echo " ---> USAGE: doupdates.sh -c"
 fi
 #====================================================================================================
 
