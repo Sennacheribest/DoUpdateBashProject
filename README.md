@@ -13,7 +13,7 @@ Linux does not do that for you automatically, _thanks to god!_
 
 ### Requirements
 1. A Linux **RPM** based systems.
-2. Superuser privileges to run the script
+2. **Superuser** privileges to run the script
 3. Turn on the execution bit of the file as shown:
 	```
 	[user@host]$ su -
