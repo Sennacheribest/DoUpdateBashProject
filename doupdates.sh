@@ -8,7 +8,7 @@ function Help()
 	echo -e "Syntax: doupdates.sh [-c|-h|-r]\n"
 	echo "Installs all available updates from rpm like repositories."
 	echo -e "Can reboot after updates if certain packages are updated. Those packages are:\n"
-	echo -e " - [ ] kernel\n - [ ] glibc\n - [ ] systemd\n"
+	echo -e " - [x] kernel\n - [x] glibc\n - [x] systemd\n"
 	echo -e "Command options:\n"
 	echo " -c	check whether updates are available and exit."
 	echo " -h	print this help and exit."
@@ -77,6 +77,7 @@ then
 else
 	_NUM_OF_AVAILABLE_PACKAGES=$(wc -l /tmp/updates.list | awk '{print $1}')
 	echo " ---> ${_NUM_OF_AVAILABLE_PACKAGES} Updates are AVAILABLE for host ${HOSTNAME}."
+	echo -e " ---> Packages require reboot:\n $(cat /tmp/updates.list | egrep '^glibc|^kernel|^systemd')\n"
 	if [ ${_CHECK} -eq 1 ]
 	then
 		exit 0
