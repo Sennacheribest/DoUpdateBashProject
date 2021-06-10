@@ -7,6 +7,7 @@ _DO_REBOOT=0
 _NEEDS_REBOOT=0
 _UPDATES_AVAILABLE=0
 _UPDATES_FILE="/tmp/updates.list"
+_NUM_OF_AVAILABLE_PACKAGES=0
 #=====================
 
 # Check for root
@@ -63,7 +64,8 @@ then
 	echo " ---> Updates are NOT available for host ${HOSTNAME} at this time."
 	exit 0
 else
-	echo " ---> Updates are AVAILABLE for host ${HOSTNAME}."
+	_NUM_OF_AVAILABLE_PACKAGES=$(wc -l /tmp/updates.list | awk '{print $1}')
+	echo " ---> ${_NUM_OF_AVAILABLE_PACKAGES} Updates are AVAILABLE for host ${HOSTNAME}."
 	if [ ${_CHECK} -eq 1 ]
 	then
 		exit 0
