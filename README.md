@@ -1,4 +1,4 @@
-# Linuxed-bash Package Updater
+# Linuxed-bash Package Updater #1589F0
 _`doupdates.sh`_ is an easy to deploy **BASH** script shell for **RPM-based** Linux derives.
 
 ## About doupdates.sh
