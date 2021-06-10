@@ -1,5 +1,5 @@
 # BASH Script to Perform Updates
-### `doupdates.sh` is an easy to deploy BASH script shell for RPM like dertives.
+### `doupdates.sh` is an easy to deploy BASH script shell for RPM-based Linux dertives.
 
 ### About doupdates.sh
 There are two important points to be considered:
