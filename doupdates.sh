@@ -25,7 +25,7 @@ function gpl()
 	echo
 	echo "##################################################################"
 	echo "# Copyright (C) 2021                                             #"
-	echo "# Muhammad Yaseen Rasheed <mohammedyasinrashid@gmail.com         #"
+	echo "# Muhammad Yaseen Rasheed <mohammedyasinrashid@gmail.com>        #"
 	echo "#                                                                #"
 	echo "# This script is free software; you can redistribute it and/or   #"
 	echo "# modify it under the terms of the GNU General Public License as #"
@@ -44,7 +44,7 @@ function gpl()
 }	# End of Licesnce Header
 #================================================================================
 
-#=====================
+#================================
 # Initialize variables
 _CHECK=0
 _DO_REBOOT=0
@@ -52,7 +52,7 @@ _NEEDS_REBOOT=0
 _UPDATES_AVAILABLE=0
 _UPDATES_FILE="/tmp/updates.list"
 _NUM_OF_AVAILABLE_PACKAGES=0
-#=====================
+#================================
 
 #============================================================================
 # Check for root
@@ -159,17 +159,20 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 if [ ${_NEEDS_REBOOT} -eq 0 ]
 then
 	echo -e "\n ---> A system reboot is NOT required.\n"
+	exit 0
 elif [ ${_DO_REBOOT} -eq 1 ] && [ ${_NEEDS_REBOOT} -eq 1 ]
 then
 	echo -e "\n ---> System is REBOOTING...\n"
-#	reboot
+	reboot
 elif [ ${_DO_REBOOT} -eq 0 ] && [ ${_NEEDS_REBOOT} -eq 1 ]
 then
 	echo -e "\n ---> A system REBOOT is needed."
 	echo -e " ---> Be sure to REBOOT the system at the earliest opportunity.\n"
+	exit 0
 else
 	echo -e "\n ---> An ERROR has occured and the programm cannot determine whether"
 	echo -e "        to reboot or not. INTERVENTION is required.\n"
+	exit 1
 fi
 #=======================================================================================
 
