@@ -10,7 +10,7 @@ Linux does not do that for you automatically, _thanks to god!_
 ### Main Structure of the Script 
 - Determine whether any updates are available.
 - Determine whether a package that requires a reboot is being updated such as:
-	- [] kernel
+	- [x] kernel
 	- [] glibc
 	- [] systemd
 - Install those updates.
