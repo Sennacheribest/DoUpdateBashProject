@@ -106,16 +106,21 @@ then
 fi
 #=====================================================
 
+#===================
+# Perform the update
+dnf -y update
+#===================
+
 #====================================================
 # Update the system man pages
 echo -e "\n ---> Updating system's manual pages...\n"
-#mandb
+mandb
 #====================================================
 
 #===========================================================
 # Update system grub configuration
 echo -e "\n ---> Updating system's grub configuration...\n "
-#grub2-mkconfig -o /boot/grub2/grub.cfg
+grub2-mkconfig -o /boot/grub2/grub.cfg
 #===========================================================
 
 #=======================================================================================
