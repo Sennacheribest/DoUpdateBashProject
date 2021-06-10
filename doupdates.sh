@@ -17,6 +17,32 @@ function Help()
 }	# end of help function
 #================================================================================================
 
+#================================================================================
+# The GPL license header function 
+function gpl()
+{
+	echo
+	echo "##################################################################"
+	echo "# Copyright (C) 2021                                             #"
+	echo "# Muhammad Yaseen Rasheed <mohammedyasinrashid@gmail.com         #"
+	echo "#                                                                #"
+	echo "# This script is free software; you can redistribute it and/or   #"
+	echo "# modify it under the terms of the GNU General Public License as #"
+	echo "# published by the Free Software Foundation; either version 2 of #"
+	echo "# the License, or (at your option) any later version.            #"
+	echo "#                                                                #"
+	echo "# This script is distributed in the hope that it will be useful, #"
+	echo "# but WITHOUT ANY WARRANTY; without even the implied warranty of #"
+	echo "# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the   #"
+	echo "# GNU General Public License for more details.                   #"
+	echo "#                                                                #"
+	echo "# For more details see:                                          #"
+	echo "# https://www.gnu.org/licenses/gpl-3.0.en.html                   #"
+	echo "##################################################################"
+	echo
+}	# End of Licesnce Header
+#================================================================================
+
 #=====================
 # Initialize variables
 _CHECK=0
@@ -27,29 +53,32 @@ _UPDATES_FILE="/tmp/updates.list"
 _NUM_OF_AVAILABLE_PACKAGES=0
 #=====================
 
-#=====================================================================
+#============================================================================
 # Check for root
 if [ ${UID} -ne 0 ]
 then
 	echo " ---> You don't have superuser privileges to run this script!"
 	exit 1
 fi
-#=====================================================================
+#============================================================================
 
 ############################
 # Main body of the program #
 ############################
 
-#================================================
+#======================================================
 # Process command input options
-while getopts ":hcr" _OPTION;
+while getopts ":hgcr" _OPTION;
 do
 	case ${_OPTION} in
 		# Check option enablement
 		c) # Check option enablement
 		   _CHECK=1;;
-		h) # Prints help function
+		h) # Prints help function and exit
 		   Help
+		   exit 0;;
+		g) # Prints GPL function and exit
+		   gpl
 		   exit 0;;
 		r) # Reboot option enablement
 		   _DO_REBOOT=1;;
@@ -58,9 +87,9 @@ do
 		    exit 1;;
 	esac
 done
-#================================================
+#======================================================
 
-#====================================================================================================
+#==============================================================================================================
 # take a snapshot of available updates and save it in _UPDATES_FILE variable
 dnf check-update > ${_UPDATES_FILE}
 
@@ -83,7 +112,7 @@ else
 		exit 0
 	fi
 fi
-#====================================================================================================
+#==============================================================================================================
 
 #=====================================================
 # Check for specific packages that need system reboots
