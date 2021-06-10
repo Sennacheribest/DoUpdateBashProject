@@ -17,7 +17,7 @@ Linux does not do that for you automatically, _thanks to god!_
 3. Turn on the execution bit of the file as shown:
 	```
 	[user@host]$ su -
-	Password:
+	 Password:
 	[root@host]# chmod 700 doupdates.sh
 	```
 
