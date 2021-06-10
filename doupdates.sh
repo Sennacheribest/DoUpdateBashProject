@@ -12,6 +12,7 @@ function Help()
 	echo -e "Command options:\n"
 	echo " -c	check whether updates are available and exit."
 	echo " -h	print this help and exit."
+	echo " -g	print GPL license and exit."
 	echo " -r	reboot system if specific trigger packages are updated."
 	echo ""
 }	# end of help function
