@@ -11,6 +11,16 @@ Linux does not do that for you automatically, _thanks to god!_
 - Performing updates specially for couple servers requires you to babysitting them while waiting to enter next command when the previous one complete without chaos  
 - This would take a great deal of your time to moniter each computer as it went through update procedures.
 
+### Requirements
+1. A Linux **RPM** based systems.
+2. Superuser privileges to run the script
+3. Turn on the execution bit of the file as shown:
+```
+$ su -
+# chmod 700 doupdates.sh
+# ls -lh doupdates.sh
+```
+
 ### Main Structure of the Script 
 - Determine whether any updates are available.
 - Determine whether a package that requires a reboot is being updated such as:
@@ -23,4 +33,4 @@ Linux does not do that for you automatically, _thanks to god!_
 - Finally do the reboot if it should.
 
 ### License
-Click [**License**](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) to read more. 
+- Click [**License**](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) to read more. 
