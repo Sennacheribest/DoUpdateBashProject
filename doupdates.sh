@@ -22,16 +22,17 @@ fi
 
 # Process command input options
 #================================================
-while getopts ":c:r" _OPTION;
+while getopts ":cr" _OPTION;
 do
 	case ${_OPTION} in
 		# Check option enablement
-		c) _CHECK=1;;
-		# Reboot option enablement
-		r) _DO_REBOOT=1;;
-		# Incorrect options
-		\?) echo "ERROR: invalid option."
-		exit 1;;
+		c) # Check option enablement
+		   _CHECK=1;;
+		r) # Reboot option enablement
+		   _DO_REBOOT=1;;
+		\?) # Incorrect options
+		    echo "ERROR: invalid option."
+		    exit 1;;
 	esac
 done
 #================================================
