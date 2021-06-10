@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #
-# Initialize variables
 #=====================
+# Initialize variables
 _CHECK=0
 _DO_REBOOT=0
 _NEEDS_REBOOT=0
@@ -10,8 +10,8 @@ _UPDATES_FILE="/tmp/updates.list"
 _NUM_OF_AVAILABLE_PACKAGES=0
 #=====================
 
-# Check for root
 #=====================================================================
+# Check for root
 if [ ${UID} -ne 0 ]
 then
 	echo " ---> You don't have superuser privileges to run this script!"
@@ -23,8 +23,8 @@ fi
 # Main body of the program #
 ############################
 
-# Process command input options
 #================================================
+# Process command input options
 while getopts ":cr" _OPTION;
 do
 	case ${_OPTION} in
@@ -40,24 +40,15 @@ do
 done
 #================================================
 
-<<obselet-code
-if [ ${_CHECK} == 1 ]
-then
-	# Check for updates
-	dnf check-update
-fi
-obselet-code
-
+#====================================================================================================
 # take a snapshot of available updates and save it in _UPDATES_FILE variable
-#===========================================================================
 dnf check-update > ${_UPDATES_FILE}
-#===========================================================================
 
 # modify script logic to quit with a message if there are no updates available now
 # facilitale the RC (Returen Code) from the command "dnf check-update"; 100: if available, 0: if not;
 # and use that as a side effect to create a list of updates that can be searched for item that will 
 # trigger a reboot logic.
-#====================================================================================================
+
 _UPDATES_AVAILABLE=${?}
 if [ ${_UPDATES_AVAILABLE} -eq 0 ]
 then
@@ -73,18 +64,40 @@ else
 fi
 #====================================================================================================
 
+#=====================================================
+# Check for specific packages that need system reboots
+# dose update list include a new kernel
+if grep ^kernel ${_UPDATES_FILE} > /dev/null
+then
+	_NEEDS_REBOOT=1
+	echo " ---> KERNEL update for ${HOSTNAME}"
+fi
+# does update list include a new glibc
+if grep ^glibc ${_UPDATES_FILE} > /dev/null
+then
+	_NEEDS_REBOOT=1
+	echo " ---> GLIBC update for ${HOSTNAME}"
+fi
+# does update list include a new systemd
+if grep ^systemd ${_UPDATES_FILE} > /dev/null
+then
+	_NEEDS_REBOOT=1
+	echo " ---> SYSTEMD update for ${HOSTNAME}"
+fi
+#=====================================================
+
 # Update the man page
 #====
 #mandb
 #====
 
-# Update the man pages database
 #=====================================
+# Update the man pages database
 #grub2-mkconfig -o /boot/grub2/grub.cfg
 #=====================================
 
+#=======================================================================================
 # Reboot if necessary
-#============================
 if [ ${_DO_REBOOT} == 1 ]
 then
 	echo " ---> Oops! I'm rebooting..."	# Doing test check without actual reboot
@@ -92,4 +105,4 @@ then
 else
 	echo " ---> Not rebooting."
 fi
-#============================
+#=======================================================================================
