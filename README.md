@@ -1,5 +1,5 @@
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) 
-# Linuxed-bash Package Updater 
++ # Linuxed-bash Package Updater 
 _`doupdates.sh`_ is an easy to deploy **BASH** script shell for **RPM-based** Linux derives.
 
 ## About doupdates.sh
