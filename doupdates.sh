@@ -6,6 +6,7 @@ _CHECK=0
 _DO_REBOOT=0
 _NEEDS_REBOOT=0
 _UPDATES_AVAILABLE=0
+_UPATES_FILE="/tmp/updates.list"
 #=====================
 
 # Check for root
@@ -57,7 +58,8 @@ fi
 #============================
 if [ ${_DO_REBOOT} == 1 ]
 then
-	reboot
+	echo "Oops! I'm rebooting..."	# Doing test check without actual reboot
+	#reboot
 else
 	echo "Not rebooting."
 fi
