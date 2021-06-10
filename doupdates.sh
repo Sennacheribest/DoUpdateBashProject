@@ -98,11 +98,20 @@ fi
 
 #=======================================================================================
 # Reboot if necessary
-if [ ${_DO_REBOOT} == 1 ]
+if [ ${_NEEDS_REBOOT} -eq 0 ]
 then
-	echo " ---> Oops! I'm rebooting..."	# Doing test check without actual reboot
-	#reboot
+	echo -e "\n ---> A system reboot is NOT required.\n"
+elif [ ${_DO_REBOOT} -eq 1 ] && [ ${_NEEDS_REBOOT} -eq 1 ]
+then
+	echo -e "\n ---> System is REBOOTING...\n"
+#	reboot
+elif [ ${_DO_REBOOT} -eq 0 ] && [ ${_NEEDS_REBOOT} -eq 1 ]
+then
+	echo -e "\n ---> A system REBOOT is needed."
+	echo -e " ---> Be sure to REBOOT the system at the earliest opportunity.\n"
 else
-	echo " ---> Not rebooting."
+	echo -e "\n ---> An ERROR has occured and the programm cannot determine whether"
+	echo -e "        to reboot or not. INTERVENTION is required.\n"
 fi
 #=======================================================================================
+
