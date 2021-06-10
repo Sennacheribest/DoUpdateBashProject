@@ -7,7 +7,7 @@ _DO_REBOOT=0
 # Check for root
 if [ ${UID} -ne 0 ]
 then
-	echo "You don't have superuser privliges to perform run this script!"
+	echo "You don't have superuser privileges to run this script!"
 	exit 1
 fi
 
