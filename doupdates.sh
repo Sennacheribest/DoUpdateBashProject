@@ -3,6 +3,8 @@
 # Initialize variables
 _CHECK=1
 _DO_REBOOT=0
+_NEEDS_REBOOT=0
+_UPDATES_AVAILABLE=0
 
 # Check for root
 if [ ${UID} -ne 0 ]
