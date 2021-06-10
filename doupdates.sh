@@ -1,5 +1,22 @@
 #!/usr/bin/bash
 #
+#================================================================================================
+# Help function
+function Help()
+{
+	echo -e "doupdates.sh	developed by: Muhammad Yaseen Rasheed\n"
+	echo -e "Syntax: doupdates.sh [-c|-h|-r]\n"
+	echo "Installs all available updates from rpm like repositories."
+	echo -e "Can reboot after updates if certain packages are updated. Those packages are:\n"
+	echo -e " - [ ] kernel\n - [ ] glibc\n - [ ] systemd\n"
+	echo -e "Command options:\n"
+	echo " -c	check whether updates are available and exit."
+	echo " -h	print this help and exit."
+	echo " -r	reboot system if specific trigger packages are updated."
+	echo ""
+}	# end of help function
+#================================================================================================
+
 #=====================
 # Initialize variables
 _CHECK=0
@@ -25,12 +42,15 @@ fi
 
 #================================================
 # Process command input options
-while getopts ":cr" _OPTION;
+while getopts ":hcr" _OPTION;
 do
 	case ${_OPTION} in
 		# Check option enablement
 		c) # Check option enablement
 		   _CHECK=1;;
+		h) # Prints help function
+		   Help
+		   exit 0;;
 		r) # Reboot option enablement
 		   _DO_REBOOT=1;;
 		\?) # Incorrect options
