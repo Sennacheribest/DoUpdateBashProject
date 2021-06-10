@@ -4,6 +4,13 @@
 _CHECK=1
 _DO_REBOOT=0
 
+# Check for root
+if [ ${UID} -ne 0 ]
+then
+	echo "You don't have superuser privliges to perform run this script!"
+	exit 1
+fi
+
 # Main body of the program
 # first we decide whether to do the updates or just check whether any are availables
 if [ ${_CHECK} == 1 ]
