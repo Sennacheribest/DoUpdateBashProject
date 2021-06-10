@@ -20,17 +20,18 @@ Linux does not do that for you automatically, _thanks to god!_
 	 Password:
 	[root@host]# chmod 700 doupdates.sh
 	```
+4. A smile on your face :)
 
 ## Main Structure of the Script 
 - Determine whether any updates are available.
 - Determine whether a package that requires a reboot is being updated such as:
-	- [ ] kernel
-	- [ ] glibc
-	- [ ] systemd
+	- [x] kernel
+	- [x] glibc
+	- [x] systemd
 - Install those updates.
 - If reboot is required, update man pages before hand; if this is not done, new and replacement man pages won't be accessible and old ones that have been removed will appear to be there even though they are not.
-- Rebuild the _grub_ boot loader configuration file so that it includes recovery options for each installed kernel.
+- Rebuild the **GRUB** bootloader configuration files so that it includes recovery options for each installed kernel.
 - Finally do the reboot if it should.
 
 ## License
-- Click [**License**](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) to read more. 
+- Click [**License**](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) for more information. 
