@@ -22,7 +22,7 @@ fi
 
 # Process command input options
 #================================================
-while getops ":c:r" _OPTION;
+while getopts ":c:r" _OPTION;
 do
 	case ${_OPTION} in
 		# Check option enablement
@@ -44,12 +44,12 @@ fi
 
 # Update the man page
 #====
-mandb
+#mandb
 #====
 
 # Update the man pages database
 #=====================================
-grub2-mkconfig -o /boot/grub2/grub.cfg
+#grub2-mkconfig -o /boot/grub2/grub.cfg
 #=====================================
 
 # Reboot if necessary
