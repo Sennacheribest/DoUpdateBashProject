@@ -15,11 +15,11 @@ Linux does not do that for you automatically, _thanks to god!_
 1. A Linux **RPM** based systems.
 2. Superuser privileges to run the script
 3. Turn on the execution bit of the file as shown:
-```
-$ su -
-# chmod 700 doupdates.sh
-# ls -lh doupdates.sh
-```
+	```
+	[user@host]$ su -
+	Password:
+	[root@host]# chmod 700 doupdates.sh
+	```
 
 ### Main Structure of the Script 
 - Determine whether any updates are available.
