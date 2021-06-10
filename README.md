@@ -23,4 +23,4 @@ Linux does not do that for you automatically, _thanks to god!_
 - Finally do the reboot if it should.
 
 ### License
-#Click [_License_](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) to read more. 
+# Click [** License **](https://raw.githubusercontent.com/Sennacheribest/DoUpdateBashProject/main/LICENSE) to read more. 
