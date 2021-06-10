@@ -17,4 +17,3 @@ Linux does not do that for you automatically, _thanks to god!_
 - If reboot is required, update man pages before hand; if this is not done, new and replacement man pages won't be accessible and old ones that have been removed will appear to be there even though they are not.
 - Rebuild the _grub_ boot loader configuration file so that it includes recovery options for each installed kernel.
 - Finally do the reboot if it should.
-
