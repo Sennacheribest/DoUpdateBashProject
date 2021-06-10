@@ -1,5 +1,5 @@
 # Linuxed-bash Package Updater
-### `doupdates.sh` is an easy to deploy BASH script shell for RPM-based Linux derives.
+### **_`doupdates.sh`_** is an easy to deploy BASH script shell for RPM-based Linux derives.
 
 ### About doupdates.sh
 There are two important points to be considered:
